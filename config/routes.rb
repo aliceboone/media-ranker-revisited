@@ -6,7 +6,7 @@ Rails.application.routes.draw do
   get '/auth/github', as: 'github_login'
 
   #Omniauth call back route
-  get '/auth/:provider/callback', to: 'users#create', as: 'omniauth_callback'
+  get '/auth/:provider/callback', to: 'users#create', as: 'auth_callback'
   get '/users/current', to: 'users#current', as: :current_user
   post "/logout", to: "users#logout", as: "logout"
 
