@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-
+  before_action :find_user
 
   def index
     @users = User.all
@@ -37,5 +37,13 @@ class UsersController < ApplicationController
     flash[:status] = :success
     flash[:result_text] = "Successfully logged out"
     redirect_to root_path
+  end
+
+  private
+
+  def find_user
+    if session[:user_id]
+      @login_user = User.find_by(id: session[:user_id])
+    end
   end
 end
