@@ -7,8 +7,6 @@ class ApplicationController < ActionController::Base
     return render :file => "#{Rails.root}/public/404.html", :status => 404, :layout => false
   end
 
-  before_action :current_user
-
   def current_user
     return @current_user = User.find_by(id: session[:user_id])
   end
